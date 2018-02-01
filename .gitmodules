@@ -1,0 +1,3 @@
+[submodule "lib/iapyx"]
+	path = lib/iapyx
+	url = https://github.com/KDahlgren/iapyx.git
