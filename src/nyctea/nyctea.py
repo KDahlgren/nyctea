@@ -12,6 +12,7 @@ Nyctea.py
 #############
 # standard python packages
 import copy, inspect, itertools, logging, os, sqlite3, string, sys, time, random
+import ConfigParser
 
 # ------------------------------------------------------ #
 # import sibling packages HERE!!!
@@ -42,6 +43,7 @@ class Nyctea( object ) :
 
     self.argDict       = argDict
     self.cursor        = cursor
+    self.settings_path = self.argDict[ "settings" ]
 
     logging.debug( "  NYCTEA CONSTRUCTOR : running nyctea with argDict :" )
     for key in argDict :
@@ -236,9 +238,31 @@ class Nyctea( object ) :
   # in the settings file
   def adjust_params( self ) :
 
+    # defaults
     num_random_facts = 10
     num_random_edbs = 10
     random_edb_arity = 5
+
+    # num_random_facts
+    try :
+      num_random_facts = tools.getConfig( self.settings_path, "NYCTEA", "NUM_RANDOM_FACTS", int )
+    except ConfigParser.NoOptionError :
+      logging.warning( "  WARNING : no 'NUM_RANDOM_FACTS' defined in 'NYCTEA' section of settings file " + self.argDict[ "settings" ] + " ...running with default : num_random_facts = " + str( num_random_facts ) )
+      pass
+
+    # num_random_edbs
+    try :
+      num_random_edbs = tools.getConfig( self.settings_path, "NYCTEA", "NUM_RANDOM_EDBS", int )
+    except ConfigParser.NoOptionError :
+      logging.warning( "  WARNING : no 'NUM_RANDOM_EDBS' defined in 'NYCTEA' section of settings file " + self.argDict[ "settings" ] + " ...running with default : num_random_facts = " + str( num_random_edbs ) )
+      pass
+
+    # random_edb_arity
+    try :
+      random_edb_arity = tools.getConfig( self.settings_path, "NYCTEA", "RANDOM_EDB_ARITY", int )
+    except ConfigParser.NoOptionError :
+      logging.warning( "  WARNING : no 'RANDOM_EDB_ARITY' defined in 'NYCTEA' section of settings file " + self.argDict[ "settings" ] + " ...running with default : random_edb_arity = " + str( random_edb_arity ) )
+      pass
 
     return [ num_random_facts, num_random_edbs, random_edb_arity ]
 

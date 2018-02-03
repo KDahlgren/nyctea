@@ -72,7 +72,7 @@ class Test_nyctea( unittest.TestCase ) :
     argDict = self.getArgDict( inputfile )
 
     # specify settings file
-    argDict[ "settings" ] = "./settingsFiles/settings_sync_assumption.ini"
+    argDict[ "settings" ] = "./settingsFiles/settings.ini"
 
     # instantiate nyctea object
     n = Nyctea.Nyctea( argDict, cursor )
