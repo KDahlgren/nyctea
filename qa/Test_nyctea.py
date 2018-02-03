@@ -138,7 +138,7 @@ class Test_nyctea( unittest.TestCase ) :
     expected_crashes                  = 0
     expected_solver                   = None
     expected_disable_dot_rendering    = False
-    expected_settings                 = "./settings.ini"
+    expected_settings                 = "./settingsFiles/settings.ini"
     expected_negative_support         = False
     expected_strategy                 = None
     expected_file                     = inputfile
@@ -204,7 +204,7 @@ class Test_nyctea( unittest.TestCase ) :
     argDict[ 'crashes' ]                  = 0
     argDict[ 'solver' ]                   = None
     argDict[ 'disable_dot_rendering' ]    = False
-    argDict[ 'settings' ]                 = "./settings.ini"
+    argDict[ 'settings' ]                 = "./settingsFiles/settings.ini"
     argDict[ 'negative_support' ]         = False
     argDict[ 'strategy' ]                 = None
     argDict[ 'file' ]                     = inputfile
